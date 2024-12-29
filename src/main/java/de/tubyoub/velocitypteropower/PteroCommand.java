@@ -101,7 +101,10 @@ public class PteroCommand implements SimpleCommand {
             case "restart":
                 if (sender.hasPermission("ptero.restart")) {
                     restartServer(sender, args);
+                } else {
+                    sender.sendMessage(getSPPPrefix().append(Component.text("You do not have permission to use this command.",TextColor.color(255,0,0))));
                 }
+                break;
             case "reload":
                 if (sender.hasPermission("ptero.reload")) {
                     reloadConfig(sender);
