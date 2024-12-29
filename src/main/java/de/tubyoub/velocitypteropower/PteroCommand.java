@@ -98,6 +98,10 @@ public class PteroCommand implements SimpleCommand {
                     sender.sendMessage(getSPPPrefix().append(Component.text("You do not have permission to use this command.",TextColor.color(255,0,0))));
                 }
                 break;
+            case "restart":
+                if (sender.hasPermission("ptero.restart")) {
+                    restartServer(sender, args);
+                }
             case "reload":
                 if (sender.hasPermission("ptero.reload")) {
                     reloadConfig(sender);
@@ -128,6 +132,28 @@ public class PteroCommand implements SimpleCommand {
             PteroServerInfo serverInfo = serverInfoMap.get(serverName);
             apiClient.powerServer(serverInfo.getServerId(), "start");
             sender.sendMessage(getSPPPrefix().append(Component.text("The server: "+ serverName + " is starting")));
+        } else {
+        }
+    }
+
+
+    /**
+     * This method is called to restart a server.
+     *
+     * @param sender the player who executed the command
+     * @param args the command arguments
+     */
+    private void restartServer(CommandSource sender, String[] args) {
+        if (args.length < 2) {
+            sender.sendMessage(getSPPPrefix().append(Component.text("Usage: /ptero restart <serverName>", TextColor.color(66,135,245))));
+            return;
+        }
+        String serverName = args[1];
+        Map<String, PteroServerInfo> serverInfoMap = plugin.getServerInfoMap();
+        if (serverInfoMap.containsKey(serverName)) {
+            PteroServerInfo serverInfo = serverInfoMap.get(serverName);
+            apiClient.powerServer(serverInfo.getServerId(), "restart");
+            sender.sendMessage(getSPPPrefix().append(Component.text("The server: "+ serverName + " is restarting")));
         } else {
         }
     }
@@ -178,6 +204,7 @@ public class PteroCommand implements SimpleCommand {
             suggestions.add("start");
             suggestions.add("stop");
             suggestions.add("reload");
+            suggestions.add("restart");
             return suggestions;
         } else if (currentArgs.length == 2) {
             String subCommand = currentArgs[0].toLowerCase();
@@ -200,6 +227,7 @@ public class PteroCommand implements SimpleCommand {
         sender.sendMessage(getSPPPrefix().append(Component.text("/ptero stop <serverName>", TextColor.color(66,135,245))));
         sender.sendMessage(getSPPPrefix().append(Component.text("/ptero reload", TextColor.color(66,135,245))));
         sender.sendMessage(getSPPPrefix().append(Component.text("/ptero help", TextColor.color(66,135,245))));
+        sender.sendMessage(getSPPPrefix().append(Component.text("/ptero restart <serverName>", TextColor.color(66,135,245))));
 }
 
     private Component getSPPPrefix() {
