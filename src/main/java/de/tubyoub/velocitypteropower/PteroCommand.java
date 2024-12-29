@@ -132,7 +132,6 @@ public class PteroCommand implements SimpleCommand {
             PteroServerInfo serverInfo = serverInfoMap.get(serverName);
             apiClient.powerServer(serverInfo.getServerId(), "start");
             sender.sendMessage(getSPPPrefix().append(Component.text("The server: "+ serverName + " is starting")));
-        } else {
         }
     }
 
