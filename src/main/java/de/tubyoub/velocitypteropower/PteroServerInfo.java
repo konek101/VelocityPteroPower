@@ -32,6 +32,7 @@ public  class PteroServerInfo {
     private final String serverId;
     private final int timeout;
     private final int joinDelay;
+    private final boolean autostart;
 
     /**
      * Constructor for the PteroServerInfo class.
@@ -40,10 +41,11 @@ public  class PteroServerInfo {
      * @param timeout the timeout for the server
      * @param joinDelay the join delay for the server
      */
-    public PteroServerInfo(String serverId, int timeout, int joinDelay) {
+    public PteroServerInfo(String serverId, int timeout, int joinDelay, boolean autostart) {
         this.serverId = serverId;
         this.timeout = timeout;
         this.joinDelay = joinDelay;
+        this.autostart = autostart;
     }
 
     /**
@@ -53,6 +55,10 @@ public  class PteroServerInfo {
      */
     public String getServerId() {
         return serverId;
+    }
+
+    public boolean isAutostart() {
+        return autostart;
     }
 
     /**

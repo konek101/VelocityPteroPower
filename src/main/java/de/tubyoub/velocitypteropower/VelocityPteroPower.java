@@ -173,6 +173,9 @@ public class VelocityPteroPower {
                 .append(Component.text("] Server not found in configuration: " + serverName, NamedTextColor.WHITE)));
             return;
         }
+        if (!serverInfo.isAutostart()) {
+            return;
+        }
         if (apiClient.isServerOnline(serverInfo.getServerId())) {
             if (startingServers.contains(serverName)){
                 startingServers.remove(serverName);

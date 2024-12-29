@@ -155,7 +155,8 @@ public class ConfigurationManager {
                         String id = (String) serverInfoData.get("id");
                         if (!Objects.equals(id, "1234abcd")){
                             int timeout = (int) serverInfoData.getOrDefault("timeout", -1);
-                            serverInfoMap.put(key, new PteroServerInfo(id, timeout, getStartupJoinDelay()));
+                            boolean autostart = (boolean) serverInfoData.getOrDefault("autostart", true);
+                            serverInfoMap.put(key, new PteroServerInfo(id, timeout, getStartupJoinDelay(),autostart));
                             logger.info("Registered Server: " + id + " successfully");
                         }
                     } catch (Exception e) {
