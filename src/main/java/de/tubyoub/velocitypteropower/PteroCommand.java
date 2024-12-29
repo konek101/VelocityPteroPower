@@ -153,8 +153,7 @@ public class PteroCommand implements SimpleCommand {
             PteroServerInfo serverInfo = serverInfoMap.get(serverName);
             apiClient.powerServer(serverInfo.getServerId(), "restart");
             sender.sendMessage(getSPPPrefix().append(Component.text("The server: "+ serverName + " is restarting")));
-        } else {
-        }
+        } 
     }
 
     /**
@@ -174,8 +173,7 @@ public class PteroCommand implements SimpleCommand {
             PteroServerInfo serverInfo = serverInfoMap.get(serverName);
             apiClient.powerServer(serverInfo.getServerId(), "stop");
             sender.sendMessage(getSPPPrefix().append(Component.text("The server: "+ serverName + " is stopping")));
-        } else {
-        }
+        } 
     }
 
     /**
