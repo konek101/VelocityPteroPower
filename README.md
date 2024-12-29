@@ -64,15 +64,22 @@ servers:
     # If you set it to 0, the server will be stopped immediately after the last player leaves.
 
     timeout: -1
+
+    # If you want to start the server automatically when a player tries to connect, set this to true.
+    # If you set it to false, the server will not be started automatically.
+    autostart: true
   test:
     id: abcd1234
     timeout: 5
+    autostart: true
   fitnacraft1:
     id: ab12cd34
     timeout: 180
+    autostart: true
   mcforge1:
     id: 1111abcd
     timeout: -1
+    autostart: true
 
 ```
 
