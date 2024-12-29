@@ -207,7 +207,7 @@ public class PteroCommand implements SimpleCommand {
             return suggestions;
         } else if (currentArgs.length == 2) {
             String subCommand = currentArgs[0].toLowerCase();
-            if (subCommand.equals("start") || subCommand.equals("stop")) {
+            if (subCommand.equals("start") || subCommand.equals("stop") || subCommand.equals("restart")) {
                 if (plugin.getServerInfoMap() != null) {
                     return plugin.getServerInfoMap().keySet().stream()
                             .filter(serverName -> serverName.startsWith(currentArgs[1]))
